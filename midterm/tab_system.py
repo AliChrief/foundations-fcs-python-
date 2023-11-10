@@ -1,4 +1,5 @@
 tabs = []
+# add tab to a list
 def open_tab(web_title,web_url):
   tabs.append({"title":web_title,"url":web_url})
   print(tabs)
