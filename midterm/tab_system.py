@@ -16,8 +16,6 @@ def close_tab(index):
     print(tabs)
 
 
-
-
 def main():
   print("""
            1. Open Tab
@@ -30,23 +28,27 @@ def main():
            8. Import Tabs
            9. Exit
         """)
-  user_choice = int(input("please enter your choice :"))
-  if user_choice == 1:
-    title = input("What is the title of your website :")
-    url = input("Enter the url of your website :")
-    open_tab(title,url)
-  if user_choice == 2:
-    user_index = input("Enter the index of tab you want to remove :")
-    # check if index is a number and not negative
-    if(user_index.isnumeric()):
-     user_index = int(user_index)
-     close_tab(user_index)
-    #  check if user didn't insert index
-    elif (not user_index):
-      close_tab(None)
-    # user doesn't enter number(string or token)
-    else:
-      print("Please enter a valid index ")
+  try:
+    user_choice = int(input("please enter your choice :"))
+    if user_choice == 1:
+      title = input("What is the title of your website :")
+      url = input("Enter the url of your website :")
+      open_tab(title,url)
+    if user_choice == 2:
+      user_index = input("Enter the index of tab you want to remove :")
+      # check if index is a number and not negative
+      if(user_index.isnumeric()):
+        user_index = int(user_index)
+        close_tab(user_index)
+      #  check if user didn't insert index
+      elif (not user_index):
+        close_tab(None)
+      # user doesn't enter number(string or token)
+      else:
+        print("Please enter a valid index ")
+  except Exception as error:
+    print("Error",error)
+
 
 
 while True:
