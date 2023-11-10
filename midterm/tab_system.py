@@ -5,7 +5,7 @@ def open_tab(web_title,web_url):
   print(tabs)
 
 def close_tab(index):
-  if (index):
+  if (index >= 0):
     try:
       tabs.pop(index)
       print(tabs)
@@ -44,7 +44,7 @@ def main():
     #  check if user didn't insert index
     elif (not user_index):
       close_tab(None)
-      # user doesn't enter number(string or token)
+    # user doesn't enter number(string or token)
     else:
       print("Please enter a valid index ")
 
