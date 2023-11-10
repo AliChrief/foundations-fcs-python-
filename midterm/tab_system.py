@@ -17,7 +17,11 @@ def main():
            8. Import Tabs
            9. Exit
         """)
-  
+  user_choice = int(input("please enter your choice :"))
+  if user_choice == 1:
+    title = input("What is the title of your website :")
+    url = input("Enter the url of your website :")
+    open_tab(title,url)
 
 while True:
   main()
