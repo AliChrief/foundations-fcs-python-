@@ -11,7 +11,10 @@ def close_tab(index):
       print(tabs)
     except Exception as error:
       print("Error :",error)
-  
+  else:
+    tabs.pop()
+    print(tabs)
+
 
 
 
