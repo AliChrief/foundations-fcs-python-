@@ -5,8 +5,13 @@ def open_tab(web_title,web_url):
   print(tabs)
 
 def close_tab(index):
+  if (index):
+    try:
+      tabs.pop(index)
+      print(tabs)
+    except Exception as error:
+      print("Error :",error)
   
-
 
 
 
