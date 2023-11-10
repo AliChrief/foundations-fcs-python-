@@ -1,11 +1,16 @@
 tabs = []
 # add tab to a list
 def open_tab(web_title,web_url):
-  tabs.append({"title":web_title,"url":web_url})
-  print(tabs)
+  # Validate the Protocol of any URL
+  if web_url.startswith("http://") or web_url.startswith("https://"):
+    tabs.append({"title":web_title,"url":web_url})
+    print(tabs)
+  else:
+    print("The URL doesn't met the protocol")
+
 
 def close_tab(index):
-  if (index >= 0):
+  if (index is not None and index >= 0):
     try:
       tabs.pop(index)
       print(tabs)
@@ -28,26 +33,26 @@ def main():
            8. Import Tabs
            9. Exit
         """)
-  try:
-    user_choice = int(input("please enter your choice :"))
-    if user_choice == 1:
-      title = input("What is the title of your website :")
-      url = input("Enter the url of your website :")
-      open_tab(title,url)
-    if user_choice == 2:
-      user_index = input("Enter the index of tab you want to remove :")
-      # check if index is a number and not negative
-      if(user_index.isnumeric()):
-        user_index = int(user_index)
-        close_tab(user_index)
-      #  check if user didn't insert index
-      elif (not user_index):
-        close_tab(None)
-      # user doesn't enter number(string or token)
-      else:
-        print("Please enter a valid index ")
-  except Exception as error:
-    print("Error",error)
+  
+  user_choice = input("please enter your choice :")
+  if user_choice == '1':
+    title = input("What is the title of your website :")
+    url = input("Enter the url of your website :")
+    open_tab(title,url)
+  elif user_choice == '2':
+    user_index = input("Enter the index of tab you want to remove :")
+    # check if index is a number and not negative
+    if(user_index.isnumeric()):
+      user_index = int(user_index)
+      close_tab(user_index)
+    #  check if user didn't insert index
+    elif (not user_index):
+      close_tab(None)
+    # user doesn't enter number(string or token)
+    else:
+      print("Please select a valid index ")
+  else:
+    print("Please select a valid choice.")
 
 
 
