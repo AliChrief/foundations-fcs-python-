@@ -37,11 +37,16 @@ def main():
     open_tab(title,url)
   if user_choice == 2:
     user_index = input("Enter the index of tab you want to remove :")
-    if(user_index):
+    # check if index is a number and not negative
+    if(user_index.isnumeric()):
      user_index = int(user_index)
      close_tab(user_index)
-    else:
+    #  check if user didn't insert index
+    elif (not user_index):
       close_tab(None)
+      # user doesn't enter number(string or token)
+    else:
+      print("Please enter a valid index ")
 
 
 while True:
