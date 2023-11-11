@@ -33,12 +33,13 @@ def close_tab(index):
   else:
     tabs.pop()
     print(tabs)
-
+# Switch tab
 def switch(switchIndex):
+  # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
   url = requests.get(tabs[switchIndex]["url"])
+  # Extract the html text
   html_text = url.text
   print(html_text)
-
 
 # Display all tabs 
 def display_all_tab():
