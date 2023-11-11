@@ -75,11 +75,13 @@ def open_nested_tap(web_title,web_url,parentIndex):
         print("The URL doesn't met the protocol")
     else:
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
-
+# Delete all tabs
 def clear_all_tab():
   global tabs
+  # Check if tab list already empty
   if len(tabs) == 0:
     print('Already empty')
+  # Delete all tabs
   else:
     tabs = []
     print(tabs)
