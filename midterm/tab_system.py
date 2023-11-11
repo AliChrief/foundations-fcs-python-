@@ -37,9 +37,11 @@ def close_tab(index):
 # Switch tab
 def switch(switchIndex):
   global tabs 
+  # Tab list is empty
   if (len(tabs) == 0):
     print('Empty tab list')
     return
+  # User enter index => validate this index
   if switchIndex is not None and switchIndex >= 0:
     try:
       # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
@@ -49,7 +51,9 @@ def switch(switchIndex):
       print(html_text)
     except Exception as error:
       print("Error :",error)
+  # User didn't pass any index
   else:
+      # last tab
       url = requests.get(tabs[len(tabs)-1]["url"])
       # Extract the html text
       html_text = url.text
