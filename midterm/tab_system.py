@@ -58,14 +58,6 @@ def display_all_tab():
         if i == tabs[x]['index']:
           print(" " * 4 , tabs[x]["title"])
     
- 
-    
-          
-      
-
-
-
-
 def main():
   print("""
            1. Open Tab
