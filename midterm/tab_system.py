@@ -32,18 +32,21 @@ def close_tab(index):
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
     # Check if user pass the same parentIndex previously
-    for i in range (len(tabs)):
-      if "index" in tabs[i]:
-        if tabs[i]["index"] == parentIndex:
-          print('This index refers to a 1st level nested tab not to a parent')
-          print(tabs)
-          return None
-    # If not add nested list with specified index to the list and validate the URL
-    if (validate_url(web_url)):
-      tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
-      print(tabs)
+    if(tabs[parentIndex].get("index") is None):
+      for i in range (len(tabs)):
+        if "index" in tabs[i]:
+          if tabs[i]["index"] == parentIndex:
+            print('This index refers to a 1st level nested tab not to a parent')
+            print(tabs)
+            return None
+      # If not add nested list with specified index to the list and validate the URL
+      if (validate_url(web_url)):
+        tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
+        print(tabs)
+      else:
+        print("The URL doesn't met the protocol")
     else:
-      print("The URL doesn't met the protocol")
+      print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
 
 
 
