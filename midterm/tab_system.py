@@ -1,12 +1,13 @@
 tabs = []
-# add tab to a list
+
+
 def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
-  if web_url.startswith("http://") or web_url.startswith("https://"):
-    tabs.append({"title":web_title,"url":web_url})
-    print(tabs)
-  else:
-    print("The URL doesn't met the protocol")
+  # if
+  tabs.append({"title":web_title,"url":web_url})
+  print(tabs)
+  # else:
+  #   print("The URL doesn't met the protocol")
 
 
 def close_tab(index):
@@ -19,6 +20,16 @@ def close_tab(index):
   else:
     tabs.pop()
     print(tabs)
+
+# check if index not include in the list 
+# check if the index is not for the child
+def open_nested_tap(web_title,web_url,parentIndex):
+    for i in range (len(tabs)):
+      if "index" in tabs[i]:
+        if tabs[i]["index"] == parentIndex:
+          print('This index refers to a 1st level nested tab not to a parent')
+          return 
+     
 
 
 def main():
@@ -51,6 +62,12 @@ def main():
     # user doesn't enter number(string or token)
     else:
       print("Please select a valid index ")
+  elif user_choice == '5':
+   
+    else:
+      print('Invalid index/tabs is empty')
+
+    
   else:
     print("Please select a valid choice.")
 
@@ -58,3 +75,4 @@ def main():
 
 while True:
   main()
+
