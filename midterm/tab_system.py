@@ -1,12 +1,16 @@
+import requests
+
 # list of tabs
 tabs = []
 terminate_system = False
+
 # Vaildate the URL 
 def validate_url(url):
   if url.startswith("http://") or url.startswith("https://"):
     return True
   else:
     return False
+  
 # Add Tab to the list
 def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
@@ -19,16 +23,33 @@ def open_tab(web_title,web_url):
 # CLose tab
 def close_tab(index):
   # Check index range and pop if user enter index
-  if (index is not None and index >= 0):
+  if index is not None and index >= 0:
     try:
       tabs.pop(index)
       print(tabs)
     except Exception as error:
       print("Error :",error)
-  # Pop is user did't insert index
+  # Pop if user did't insert index
   else:
     tabs.pop()
     print(tabs)
+
+
+
+# Display all tabs 
+def display_all_tab():
+  if(len(tabs) == 0):
+    print("Empty tab")
+    return
+  for i in range (len(tabs)):
+   #  Print tab's title that aren't nested
+   if(tabs[i].get("index") is None):
+    print(tabs[i]["title"])
+    # Print nested title tabs under parent tab
+    for x in range (len(tabs)):
+      if(tabs[x].get("index") is not None ):
+        if i == tabs[x]['index']:
+          print(" " * 4 , tabs[x]["title"])
 
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
@@ -48,20 +69,6 @@ def open_nested_tap(web_title,web_url,parentIndex):
         print("The URL doesn't met the protocol")
     else:
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
-# Display all tabs 
-def display_all_tab():
-  if(len(tabs) == 0):
-    print("Empty tab")
-    return
-  for i in range (len(tabs)):
-   #  Print tab's title that aren't nested
-   if(tabs[i].get("index") is None):
-    print(tabs[i]["title"])
-    # Print nested title tabs under parent tab
-    for x in range (len(tabs)):
-      if(tabs[x].get("index") is not None ):
-        if i == tabs[x]['index']:
-          print(" " * 4 , tabs[x]["title"])
     
 def main():
   print("""
@@ -81,6 +88,7 @@ def main():
     title = input("What is the title of your website :")
     url = input("Enter the url of your website :")
     open_tab(title,url)
+
   elif user_choice == '2':
     user_index = input("Enter the index of tab you want to remove :")
     # Check if index is number and > 0
@@ -93,12 +101,20 @@ def main():
     # User enter thing other than number (string or token)
     else:
       print("Please select a valid index ")
+
   elif user_choice == '3':
-    switch()
+    switch_index = input("Enter the tab's index you want to switch :")
+    if switch_index.isnumeric() and 0 <= int(switch_index) <= len(tabs)-1 and len(tabs) >= 0 :
+      switch_index = int(switch_index)
+      switch(switch_index)
+    else:
+      print('Invalid index/tabs is empty')
+
   elif user_choice == '4':
     display_all_tab()
+
   elif user_choice == '5':
-    parent_index = input("Enter the parent index")
+    parent_index = input("Enter the parent index :")
     # Validate user parent index
     if parent_index.isnumeric() and 0 <= int(parent_index) <= len(tabs)-1 and len(tabs) >= 0 :
       parent_index = int(parent_index)
