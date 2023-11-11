@@ -1,5 +1,6 @@
 # list of tabs
 tabs = []
+terminate_system = False
 # Vaildate the URL 
 def validate_url(url):
   if url.startswith("http://") or url.startswith("https://"):
@@ -91,12 +92,14 @@ def main():
     else:
       print('Invalid index/tabs is empty')
 
-    
+  elif user_choice == '9':
+    global terminate_system
+    terminate_system = True
   else:
     print("Please select a valid choice.")
 
 
 
-while True:
-  main()
+while terminate_system == False:
+   main()
 
