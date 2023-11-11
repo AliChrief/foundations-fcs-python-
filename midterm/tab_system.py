@@ -29,7 +29,9 @@ def open_nested_tap(web_title,web_url,parentIndex):
         if tabs[i]["index"] == parentIndex:
           print('This index refers to a 1st level nested tab not to a parent')
           return 
-     
+      tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
+      print(tabs)
+
 
 
 def main():
