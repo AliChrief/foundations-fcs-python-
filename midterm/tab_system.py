@@ -32,7 +32,7 @@ def close_tab(index):
 
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
-    if(tabs[parentIndex].get("index") is None): #Prevent the user to made nested tab inside another nested tab (1 level allowed as charbel said)
+    if(tabs[parentIndex].get("index") is None): #Prevent the user to made nested tab inside another nested tab (1 level nesting allowed as charbel said)
       # Check if user pass the same parentIndex previously (Deny repetitive nested tabs for same parentIndex)
       for i in range (len(tabs)):
         if "index" in tabs[i]:
@@ -40,7 +40,7 @@ def open_nested_tap(web_title,web_url,parentIndex):
             print('This index refers to a 1st level nested tab not to a parent')
             print(tabs)
             return None
-      # If not add nested list with specified index to the list and validate the URL
+      # If not, add nested list with specified index to the list and validate the URL
       if (validate_url(web_url)):
         tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
         print(tabs)
@@ -50,11 +50,14 @@ def open_nested_tap(web_title,web_url,parentIndex):
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
 # Display all tabs 
 def display_all_tab():
+  if(len(tabs) == 0):
+    print("Empty tab")
+    return
   for i in range (len(tabs)):
    #  Print tab's title that aren't nested
    if(tabs[i].get("index") is None):
     print(tabs[i]["title"])
-    # Print nested title tabs
+    # Print nested title tabs under parent tab
     for x in range (len(tabs)):
       if(tabs[x].get("index") is not None ):
         if i == tabs[x]['index']:
@@ -90,6 +93,8 @@ def main():
     # User enter thing other than number (string or token)
     else:
       print("Please select a valid index ")
+  elif user_choice == '3':
+    switch()
   elif user_choice == '4':
     display_all_tab()
   elif user_choice == '5':
