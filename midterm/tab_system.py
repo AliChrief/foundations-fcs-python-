@@ -1,11 +1,12 @@
+# list of tabs
 tabs = []
-# add tab to a list
+# Vaildate the URL 
 def validate_url(url):
   if url.startswith("http://") or url.startswith("https://"):
     return True
   else:
     return False
-
+# Add Tab to the list
 def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
   if (validate_url(web_url)):
@@ -14,26 +15,30 @@ def open_tab(web_title,web_url):
   else:
     print("The URL doesn't met the protocol")
 
-
+# CLose tab
 def close_tab(index):
+  # Check index range and pop if user enter index
   if (index is not None and index >= 0):
     try:
       tabs.pop(index)
       print(tabs)
     except Exception as error:
       print("Error :",error)
+  # Pop is user did't insert index
   else:
     tabs.pop()
     print(tabs)
 
-
+# Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
+    # Check if user pass the same parentIndex previously
     for i in range (len(tabs)):
       if "index" in tabs[i]:
         if tabs[i]["index"] == parentIndex:
           print('This index refers to a 1st level nested tab not to a parent')
           print(tabs)
           return None
+    # If not add nested list with specified index to the list and validate the URL
     if (validate_url(web_url)):
       tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
       print(tabs)
@@ -62,18 +67,19 @@ def main():
     open_tab(title,url)
   elif user_choice == '2':
     user_index = input("Enter the index of tab you want to remove :")
-    # check if index is a number and not negative
+    # Check if index is number and > 0
     if(user_index.isnumeric()):
       user_index = int(user_index)
       close_tab(user_index)
-    #  check if user didn't insert index
+    # Check if user didn't insert index
     elif (not user_index):
       close_tab(None)
-    # user doesn't enter number(string or token)
+    # User enter thing other than number (string or token)
     else:
       print("Please select a valid index ")
   elif user_choice == '5':
     parent_index = input("Enter the parent index")
+    # Validate user parent index
     if parent_index.isnumeric() and 0 <= int(parent_index) <= len(tabs)-1 and len(tabs) >= 0 :
       parent_index = int(parent_index)
       title = input("What is the title of your website :")
