@@ -48,11 +48,13 @@ def open_nested_tap(web_title,web_url,parentIndex):
         print("The URL doesn't met the protocol")
     else:
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
-
+# Display all tabs 
 def display_all_tab():
   for i in range (len(tabs)):
+   #  Print tab's title that aren't nested
    if(tabs[i].get("index") is None):
     print(tabs[i]["title"])
+    # Print nested title tabs
     for x in range (len(tabs)):
       if(tabs[x].get("index") is not None ):
         if i == tabs[x]['index']:
