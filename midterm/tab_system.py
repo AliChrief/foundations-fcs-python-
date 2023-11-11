@@ -33,6 +33,7 @@ def close_tab(index):
   else:
     tabs.pop()
     print(tabs)
+
 # Switch tab
 def switch(switchIndex):
   # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
@@ -128,7 +129,8 @@ def main():
       open_nested_tap(title,url,parent_index)
     else:
       print('Invalid index/tabs is empty')
-
+  elif user_choice == '6':
+    clear_all_tab()
   elif user_choice == '9':
     global terminate_system
     terminate_system = True
