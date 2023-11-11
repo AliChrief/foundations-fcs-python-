@@ -36,7 +36,8 @@ def close_tab(index):
 
 def switch(switchIndex):
   url = requests.get(tabs[switchIndex]["url"])
-  htmltext = url.text
+  html_text = url.text
+  print(html_text)
 
 
 # Display all tabs 
