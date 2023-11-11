@@ -55,7 +55,6 @@ def switch(switchIndex):
       html_text = url.text
       print(html_text)
 
-
 # Display all tabs 
 def display_all_tab():
   if(len(tabs) == 0):
