@@ -71,7 +71,7 @@ def main():
       print("Please select a valid index ")
   elif user_choice == '5':
     parent_index = input("Enter the parent index")
-    if parent_index.isnumeric() and 0 <= int(parent_index) <= len(tabs)-1 and len(tabs) >= 0:
+    if parent_index.isnumeric() and 0 <= int(parent_index) <= len(tabs)-1 and len(tabs) >= 0 :
       parent_index = int(parent_index)
       title = input("What is the title of your website :")
       url = input("Enter the url of your website :")
