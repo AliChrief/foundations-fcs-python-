@@ -8,11 +8,11 @@ def validate_url(url):
 
 def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
-  # if
-  tabs.append({"title":web_title,"url":web_url})
-  print(tabs)
-  # else:
-  #   print("The URL doesn't met the protocol")
+  if (validate_url(web_url)):
+   tabs.append({"title":web_title,"url":web_url})
+   print(tabs)
+  else:
+    print("The URL doesn't met the protocol")
 
 
 def close_tab(index):
@@ -26,16 +26,18 @@ def close_tab(index):
     tabs.pop()
     print(tabs)
 
-# check if index not include in the list 
-# check if the index is not for the child
+
 def open_nested_tap(web_title,web_url,parentIndex):
     for i in range (len(tabs)):
       if "index" in tabs[i]:
         if tabs[i]["index"] == parentIndex:
           print('This index refers to a 1st level nested tab not to a parent')
           return 
-      tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
-      print(tabs)
+      if (validate_url(web_url)):
+        tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
+        print(tabs)
+      else:
+        print("The URL doesn't met the protocol")
 
 
 
