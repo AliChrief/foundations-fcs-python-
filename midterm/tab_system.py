@@ -31,8 +31,8 @@ def close_tab(index):
 
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
-    # Check if user pass the same parentIndex previously
-    if(tabs[parentIndex].get("index") is None):
+    if(tabs[parentIndex].get("index") is None): #Prevent the user to made nested tab inside another nested tab (1 level allowed as charbel said)
+      # Check if user pass the same parentIndex previously (Deny repetitive nested tabs for same parentIndex)
       for i in range (len(tabs)):
         if "index" in tabs[i]:
           if tabs[i]["index"] == parentIndex:
