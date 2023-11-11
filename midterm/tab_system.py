@@ -36,11 +36,25 @@ def close_tab(index):
 
 # Switch tab
 def switch(switchIndex):
-  # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
-  url = requests.get(tabs[switchIndex]["url"])
-  # Extract the html text
-  html_text = url.text
-  print(html_text)
+  global tabs 
+  if (len(tabs) == 0):
+    print('Empty tab list')
+    return
+  if switchIndex is not None and switchIndex >= 0:
+    try:
+      # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
+      url = requests.get(tabs[switchIndex]["url"])
+      # Extract the html text
+      html_text = url.text
+      print(html_text)
+    except Exception as error:
+      print("Error :",error)
+  else:
+      url = requests.get(tabs[len(tabs)-1]["url"])
+      # Extract the html text
+      html_text = url.text
+      print(html_text)
+
 
 # Display all tabs 
 def display_all_tab():
@@ -75,6 +89,7 @@ def open_nested_tap(web_title,web_url,parentIndex):
         print("The URL doesn't met the protocol")
     else:
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
+
 # Delete all tabs
 def clear_all_tab():
   global tabs
@@ -120,11 +135,13 @@ def main():
 
   elif user_choice == '3':
     switch_index = input("Enter the tab's index you want to switch :")
-    if switch_index.isnumeric() and 0 <= int(switch_index) <= len(tabs)-1 and len(tabs) >= 0 :
+    if switch_index.isnumeric() :
       switch_index = int(switch_index)
       switch(switch_index)
+    elif (not switch_index):
+      switch(None)
     else:
-      print('Invalid index/tabs is empty')
+      print('Invalid index')
 
   elif user_choice == '4':
     display_all_tab()
