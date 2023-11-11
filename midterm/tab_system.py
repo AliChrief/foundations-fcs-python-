@@ -53,7 +53,10 @@ def display_all_tab():
   for i in range (len(tabs)):
    if(tabs[i].get("index") is None):
     print(tabs[i]["title"])
-   
+    for x in range (len(tabs)):
+      if(tabs[x].get("index") is not None ):
+        if i == tabs[x]['index']:
+          print(" " * 4 , tabs[x]["title"])
     
  
     
