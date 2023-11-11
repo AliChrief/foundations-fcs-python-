@@ -49,6 +49,18 @@ def open_nested_tap(web_title,web_url,parentIndex):
     else:
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
 
+def display_all_tab():
+  for i in range (len(tabs)):
+   if(tabs[i].get("index") is None):
+    print(tabs[i]["title"])
+   
+    
+ 
+    
+          
+      
+
+
 
 
 def main():
@@ -81,6 +93,8 @@ def main():
     # User enter thing other than number (string or token)
     else:
       print("Please select a valid index ")
+  elif user_choice == '4':
+    display_all_tab()
   elif user_choice == '5':
     parent_index = input("Enter the parent index")
     # Validate user parent index
