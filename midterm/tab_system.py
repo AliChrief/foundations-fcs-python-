@@ -1,5 +1,10 @@
 tabs = []
-
+# add tab to a list
+def validate_url(url):
+  if url.startswith("http://") or url.startswith("https://"):
+    return True
+  else:
+    return False
 
 def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
