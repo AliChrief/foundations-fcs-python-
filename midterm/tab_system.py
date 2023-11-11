@@ -32,12 +32,13 @@ def open_nested_tap(web_title,web_url,parentIndex):
       if "index" in tabs[i]:
         if tabs[i]["index"] == parentIndex:
           print('This index refers to a 1st level nested tab not to a parent')
-          return 
-      if (validate_url(web_url)):
-        tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
-        print(tabs)
-      else:
-        print("The URL doesn't met the protocol")
+          print(tabs)
+          return None
+    if (validate_url(web_url)):
+      tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
+      print(tabs)
+    else:
+      print("The URL doesn't met the protocol")
 
 
 
