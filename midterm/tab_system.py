@@ -21,7 +21,6 @@ def open_tab(web_title,web_url):
   # Validate the Protocol of any URL
   if (validate_url(web_url)):
    tabs.append({"title":web_title,"url":web_url})
-   print(tabs)
   else:
     print("The URL doesn't met the protocol")
 
@@ -33,13 +32,11 @@ def close_tab(index):
   if index is not None and index >= 0:
     try:
       tabs.pop(index)
-      print(tabs)
     except Exception as error:
       print("Error :",error)
   # Pop if user did't insert index
   else:
     tabs.pop()
-    print(tabs)
 
 # Switch tab
 # O(1)
@@ -94,12 +91,10 @@ def open_nested_tap(web_title,web_url,parentIndex):
         if "index" in tabs[i]:
           if tabs[i]["index"] == parentIndex:
             print('This index refers to a 1st level nested tab not to a parent')
-            print(tabs)
             return None
       # If not, add nested list with specified index to the list and validate the URL
       if (validate_url(web_url)):
         tabs.append({"index":parentIndex,"title":web_title,"url":web_url})
-        print(tabs)
       else:
         print("The URL doesn't met the protocol")
     else:
@@ -115,14 +110,13 @@ def clear_all_tab():
   # Clear all opened tabs.
   else:
     tabs = []
-    print(tabs)
 # Save tabs
 # O(n)
 def save_tabs(path):
   global tabs 
   # Check if the list is empty
   if(len(tabs) == 0):
-    print("Empty tab lsit")
+    print("Empty tab list")
     return
   # Convert every element into string in list that have single quotes to double since json doesn't accept single quote
   tabs_str = str(tabs).replace("'", '"')
