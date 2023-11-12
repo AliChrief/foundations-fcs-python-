@@ -15,6 +15,7 @@ def validate_url(url):
   
 # Add Tab to the list
 def open_tab(web_title,web_url):
+  global tabs
   # Validate the Protocol of any URL
   if (validate_url(web_url)):
    tabs.append({"title":web_title,"url":web_url})
@@ -24,6 +25,7 @@ def open_tab(web_title,web_url):
 
 # CLose tab
 def close_tab(index):
+  global tabs
   # Check index range and pop if user enter index
   if index is not None and index >= 0:
     try:
@@ -63,6 +65,7 @@ def switch(switchIndex):
 
 # Display all tabs 
 def display_all_tab():
+  global tabs
   if(len(tabs) == 0):
     print("Empty tab")
     return
@@ -78,6 +81,7 @@ def display_all_tab():
 
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
+    global tabs
     if(tabs[parentIndex].get("index") is None): #Prevent the user to made nested tab inside another nested tab (1 level nesting allowed as charbel said)
       # Check if user pass the same parentIndex previously (Deny repetitive nested tabs for same parentIndex)
       for i in range (len(tabs)):
@@ -105,6 +109,7 @@ def clear_all_tab():
   else:
     tabs = []
     print(tabs)
+
 def save_tabs(path):
   global tabs 
   # Check if the list is empty
@@ -118,16 +123,18 @@ def save_tabs(path):
       file.write(tabs_str)
       # Close the file
       file.close()
-
+# Import tabs
 def import_tab(path):
   global tabs
   try :
     with open(path, 'r') as file:
-        tab = file.read()
+      tab = file.read()
+    # Convert from string type into dictionary type
     tab = json.loads(tab)
+    # Append the contents to tab list
     for i in range (len(tab)):
       tabs.append(tab[i])
-  except Exception as error:
+  except Exception as error: # Handle the existence of file
       print("Error :",error)
 
 def main():
@@ -141,6 +148,7 @@ def main():
            7. Save Tabs
            8. Import Tabs
            9. Exit
+        
         """)
   
   user_choice = input("please enter your choice :")
@@ -185,14 +193,18 @@ def main():
       open_nested_tap(title,url,parent_index)
     else:
       print('Invalid index/tabs is empty')
+
   elif user_choice == '6':
     clear_all_tab()
+
   elif user_choice == '7':
-    path = os.path.abspath("save.json")
+    path = os.path.abspath("save_tab.json")
     save_tabs(path)
+
   elif user_choice == '8':
     path = os.path.abspath("save_tab.json")
     import_tab(path)
+
   elif user_choice == '9':
     global terminate_system
     terminate_system = True
