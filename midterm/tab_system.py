@@ -28,13 +28,13 @@ def open_tab(web_title,web_url):
 # O(1)
 def close_tab(index):
   global tabs
-  # Check index range and pop if user enter index
+  # Pop if user enter index
   if index is not None and index >= 0:
     try:
       tabs.pop(index)
-    except Exception as error:
+    except Exception as error:# Handle index range error
       print("Error :",error)
-  # Pop if user did't insert index
+  # Pop last item if user didn't insert index
   else:
     tabs.pop()
 
@@ -46,7 +46,7 @@ def switch(switchIndex):
   if (len(tabs) == 0):
     print('Empty tab list')
     return
-  # User enter index => validate this index
+  # If user enter index then => validate this index
   if switchIndex is not None and switchIndex >= 0:
     try:
       # Using the URL from the dictionary at switchIndex to make a GET request using the requests library.
@@ -54,7 +54,7 @@ def switch(switchIndex):
       # Extract the html text
       html_text = url.text
       print(html_text)
-    except Exception as error:
+    except Exception as error: # Handle URL validation error 
       print("Error :",error)
   # User didn't pass any index
   else:
@@ -68,6 +68,7 @@ def switch(switchIndex):
 # O(n^2) 
 def display_all_tab():
   global tabs
+  # Empty tab list
   if(len(tabs) == 0):
     print("Empty tab")
     return
@@ -107,9 +108,10 @@ def clear_all_tab():
   # Check if tab list already empty
   if len(tabs) == 0:
     print('Already empty')
-  # Clear all opened tabs.
+  # Else clear all opened tabs.
   else:
     tabs = []
+
 # Save tabs
 # O(n)
 def save_tabs(path):
@@ -176,9 +178,11 @@ def main():
 
   elif user_choice == '3':
     switch_index = input("Enter the tab's index you want to switch :")
+    # Check if index is numeric > 0
     if switch_index.isnumeric() :
       switch_index = int(switch_index)
       switch(switch_index)
+    # If user didn't pass index
     elif (not switch_index):
       switch(None)
     else:
@@ -202,6 +206,7 @@ def main():
     clear_all_tab()
 
   elif user_choice == '7':
+    # Pass the absolute path (full path) of the json file 
     path = os.path.abspath("save_tab.json")
     save_tabs(path)
 
