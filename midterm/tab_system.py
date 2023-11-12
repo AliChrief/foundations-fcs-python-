@@ -6,7 +6,8 @@ import json
 tabs = []
 terminate_system = False
 
-# Vaildate the URL 
+# Vaildate the URL
+#  O(1)
 def validate_url(url):
   if url.startswith("http://") or url.startswith("https://"):
     return True
@@ -123,6 +124,7 @@ def save_tabs(path):
       file.write(tabs_str)
       # Close the file
       file.close()
+
 # Import tabs
 def import_tab(path):
   global tabs
