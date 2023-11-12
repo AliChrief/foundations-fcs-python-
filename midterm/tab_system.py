@@ -113,7 +113,6 @@ def save_tabs(path):
   with open(path, 'w') as file:
       # Write content to the file
       file.write(tabs_str)
-      #  json.dump(tabs, file)
       file.close()
 
     
