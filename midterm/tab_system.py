@@ -121,7 +121,11 @@ def save_tabs(path):
 
 def import_tab(path):
   global tabs
-  
+  try :
+    with open(path, 'r') as file:
+       
+  except Exception as error:
+      print("Error :",error)
 
 
 
