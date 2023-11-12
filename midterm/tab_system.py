@@ -117,6 +117,7 @@ def clear_all_tab():
     tabs = []
     print(tabs)
 # Save tabs
+# O(n)
 def save_tabs(path):
   global tabs 
   # Check if the list is empty
