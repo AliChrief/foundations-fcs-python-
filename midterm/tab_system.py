@@ -118,7 +118,8 @@ def save_tabs(path):
       # Close the file
       file.close()
 
-    
+def import_tab():
+  
 def main():
   print("""
            1. Open Tab
