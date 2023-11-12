@@ -67,7 +67,8 @@ def switch(switchIndex):
       html_text = url.text
       print(html_text)
 
-# Display all tabs 
+# Display all tabs
+# O(n^2) 
 def display_all_tab():
   global tabs
   if(len(tabs) == 0):
