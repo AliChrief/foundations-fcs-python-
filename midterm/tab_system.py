@@ -15,6 +15,7 @@ def validate_url(url):
     return False
   
 # Add Tab to the list
+# O(1)
 def open_tab(web_title,web_url):
   global tabs
   # Validate the Protocol of any URL
