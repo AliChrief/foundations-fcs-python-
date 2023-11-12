@@ -119,7 +119,7 @@ def save_tabs(path):
       file.close()
 
 def import_tab():
-  
+
 def main():
   print("""
            1. Open Tab
@@ -180,7 +180,9 @@ def main():
   elif user_choice == '7':
     path = os.path.abspath("saveTab.json")
     save_tabs(path)
-    
+  elif user_choice == '8':
+    path = os.path.abspath("saveTab.json")
+    import_tab(path)
   elif user_choice == '9':
     global terminate_system
     terminate_system = True
