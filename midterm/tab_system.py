@@ -162,6 +162,10 @@ def main():
       print('Invalid index/tabs is empty')
   elif user_choice == '6':
     clear_all_tab()
+  elif user_choice == '7':
+    path = os.path.abspath("saveTab.json")
+    save_tabs(path)
+    
   elif user_choice == '9':
     global terminate_system
     terminate_system = True
