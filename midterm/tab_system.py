@@ -125,7 +125,8 @@ def import_tab(path):
     with open(path, 'r') as file:
         tab = file.read()
     tab = json.loads(tab)
-    
+    for i in range (len(tab)):
+      tabs.append(tab[i])
   except Exception as error:
       print("Error :",error)
 
