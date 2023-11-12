@@ -106,13 +106,16 @@ def clear_all_tab():
     print(tabs)
 def save_tabs(path):
   global tabs 
+  # Check if the list is empty
   if(len(tabs) == 0):
     print("Empty tab lsit")
     return
+  # Convert every element into string in list that have single quotes to double since json doesn't accept single quote
   tabs_str = str(tabs).replace("'", '"')
   with open(path, 'w') as file:
-      # Write content to the file
+      # Write the contents to the file
       file.write(tabs_str)
+      # Close the file
       file.close()
 
     
