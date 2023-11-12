@@ -106,6 +106,7 @@ def open_nested_tap(web_title,web_url,parentIndex):
       print("This index refers to a nested tab, you can't made nested tab inside another nested tab")
 
 # Delete all tabs
+# O(1)
 def clear_all_tab():
   global tabs
   # Check if tab list already empty
