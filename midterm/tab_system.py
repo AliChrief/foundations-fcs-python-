@@ -42,6 +42,7 @@ def close_tab(index):
     print(tabs)
 
 # Switch tab
+# O(1)
 def switch(switchIndex):
   global tabs 
   # Tab list is empty
