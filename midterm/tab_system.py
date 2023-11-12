@@ -109,9 +109,8 @@ def save_tabs(path):
   if(len(tabs) == 0):
     print("Empty tab lsit")
     return
-  
+  tabs_str = str(tabs).replace("'", '"')
 
-    
 def main():
   print("""
            1. Open Tab
