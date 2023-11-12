@@ -104,6 +104,13 @@ def clear_all_tab():
   else:
     tabs = []
     print(tabs)
+def save_tabs(path):
+  global tabs 
+  if(len(tabs) == 0):
+    print("Empty tab lsit")
+    return
+  
+
     
 def main():
   print("""
