@@ -85,6 +85,7 @@ def display_all_tab():
           print(" " * 4 ,"Nested tab related to parent tab whose index number:",i," ", tabs[x]["title"])
 
 # Add nested tab to the list
+# O(n)
 def open_nested_tap(web_title,web_url,parentIndex):
     global tabs
     if(tabs[parentIndex].get("index") is None): #Prevent the user to made nested tab inside another nested tab (1 level nesting allowed as charbel said)
@@ -114,7 +115,7 @@ def clear_all_tab():
   else:
     tabs = []
     print(tabs)
-
+# Save tabs
 def save_tabs(path):
   global tabs 
   # Check if the list is empty
@@ -130,6 +131,7 @@ def save_tabs(path):
       file.close()
 
 # Import tabs
+# O(n)
 def import_tab(path):
   global tabs
   try :
