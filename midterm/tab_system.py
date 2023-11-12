@@ -130,9 +130,6 @@ def import_tab(path):
   except Exception as error:
       print("Error :",error)
 
-
-
-
 def main():
   print("""
            1. Open Tab
