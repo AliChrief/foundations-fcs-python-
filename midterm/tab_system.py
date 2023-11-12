@@ -67,12 +67,12 @@ def display_all_tab():
   for i in range (len(tabs)):
    #  Print tab's title that aren't nested
    if(tabs[i].get("index") is None):
-    print(tabs[i]["title"])
+    print("Tab number :",i," ",tabs[i]["title"])
     # Print nested title tabs under parent tab
     for x in range (len(tabs)):
       if(tabs[x].get("index") is not None ):
         if i == tabs[x]['index']:
-          print(" " * 4 , tabs[x]["title"])
+          print(" " * 4 ,"Nested tab related to parent tab whose index number:",i," ", tabs[x]["title"])
 
 # Add nested tab to the list
 def open_nested_tap(web_title,web_url,parentIndex):
@@ -99,7 +99,7 @@ def clear_all_tab():
   # Check if tab list already empty
   if len(tabs) == 0:
     print('Already empty')
-  # Delete all tabs
+  # Clear all opened tabs.
   else:
     tabs = []
     print(tabs)
