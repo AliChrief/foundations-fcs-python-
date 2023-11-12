@@ -110,7 +110,13 @@ def save_tabs(path):
     print("Empty tab lsit")
     return
   tabs_str = str(tabs).replace("'", '"')
+  with open(path, 'w') as file:
+      # Write content to the file
+      file.write(tabs_str)
+      #  json.dump(tabs, file)
+     
 
+    
 def main():
   print("""
            1. Open Tab
