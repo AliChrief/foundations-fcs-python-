@@ -26,6 +26,7 @@ def open_tab(web_title,web_url):
     print("The URL doesn't met the protocol")
 
 # CLose tab
+# O(1)
 def close_tab(index):
   global tabs
   # Check index range and pop if user enter index
