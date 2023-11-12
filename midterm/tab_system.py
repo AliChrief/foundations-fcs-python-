@@ -1,5 +1,6 @@
 import requests
 import os.path
+import json
 
 # list of tabs
 tabs = []
@@ -118,7 +119,12 @@ def save_tabs(path):
       # Close the file
       file.close()
 
-def import_tab():
+def import_tab(path):
+  global tabs
+  
+
+
+
 
 def main():
   print("""
@@ -178,10 +184,10 @@ def main():
   elif user_choice == '6':
     clear_all_tab()
   elif user_choice == '7':
-    path = os.path.abspath("saveTab.json")
+    path = os.path.abspath("save.json")
     save_tabs(path)
   elif user_choice == '8':
-    path = os.path.abspath("saveTab.json")
+    path = os.path.abspath("save_tab.json")
     import_tab(path)
   elif user_choice == '9':
     global terminate_system
