@@ -123,7 +123,9 @@ def import_tab(path):
   global tabs
   try :
     with open(path, 'r') as file:
-       
+        tab = file.read()
+    tab = json.loads(tab)
+    
   except Exception as error:
       print("Error :",error)
 
