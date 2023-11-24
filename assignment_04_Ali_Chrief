@@ -1,0 +1,83 @@
+class Tasks : 
+    
+    def __init__(self,description,priority,completed,id):
+        self.description = description
+        self.priority = priority
+        self.completed = completed 
+        self.id = id
+    def getDescription(self):
+        return self.description
+    def getPriority(self):
+        return self.priority
+    def getCompleted(self):
+        return self.completed
+    
+    def setDescription(self, newDiscription):
+        self.description = newDiscription
+    def setPriority(self, newPriority):
+        self.priority = newPriority
+    def setcompleted(self, completed):
+        self.completed = completed
+class TaskManger :
+
+    def __init__(self):
+        self.tasks = []
+        self.task_history = []
+    def addTask(self,desc,pri,comp):
+        task = Tasks(desc,pri,comp,len(self.tasks) + 1)
+        self.tasks.append(task)
+        
+    def get_task_by_id(self,id):
+        for i in self.tasks:
+            if i.id == id:
+                return i
+    def complete(self):
+        heighst = 0
+        for i in self.tasks :
+            if(i.priority > heighst):
+                heighst = self.tasks.priority
+        for x in self.tasks:
+            if(x.priority == heighst):
+                x.completed == True
+                self.task_history.append(x)
+    def display_by_priority(self):
+        self.tasks = sorted(self.tasks, key=lambda x: x['priority'])
+        for i in self.tasks: 
+            print(i,end="")
+    def display_last_completed_task(self):
+        print(self.task_history[len(self.task_history)-1])
+
+
+def menu():
+    task = TaskManger()
+    print("""
+            1. Adding a new task to the task manager.
+            2. Getting a task from the queue given a task id
+            3. Marking the highest priority task as completed and putting it in the task history.
+            4. Displaying all tasks in order of priority.
+            5. Displaying only the tasks that are not completed.
+            6. Displaying the last completed task.
+            7. Exit
+          
+          """)
+    choice = input("Enter your choice ")
+    if choice == '1':
+        des = input('enter description :')
+        pri = int(input('Enter the priority of the task :'))
+        flag = False
+        task.addTask(des,pri,flag)
+    if choice == '2':
+        id = int(input("Enter the id : "))
+        print(task.get_task_by_id(id))
+    if choice == '3':
+        task.complete()
+    if choice == '4':
+        task.display_by_priority()
+    if choice == '6':
+        task.display_last_completed_task()
+
+        
+
+
+while True :
+    menu()
