@@ -64,7 +64,7 @@ def menu():
             4. Visualize Family Tree
             5. Count Same First Names
             6. Exit
-          
+        
           """)
     choice = input("Enter your choice ")
     if choice == '1':
